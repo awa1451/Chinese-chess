@@ -1,0 +1,46 @@
+# Project: 中国象棋
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o tools.o game_runner.o animation.o draw.o archive.o linked_list.o
+LINKOBJ  = main.o tools.o game_runner.o animation.o draw.o archive.o linked_list.o
+LIBS     = -L"C:/aaaApps/Tools/Dev-Cpp/MinGW64/lib" -L"C:/aaaApps/Tools/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -lgraphics64 -luuid -lmsimg32 -lgdi32 -limm32 -lole32 -loleaut32 -g3
+INCS     = -I"C:/aaaApps/Tools/Dev-Cpp/MinGW64/include" -I"C:/aaaApps/Tools/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/aaaApps/Tools/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/aaaApps/Tools/Dev-Cpp/MinGW64/include" -I"C:/aaaApps/Tools/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/aaaApps/Tools/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/aaaApps/Tools/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = 中国象棋.exe
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+tools.o: tools.c
+	$(CPP) -c tools.c -o tools.o $(CXXFLAGS)
+
+game_runner.o: game_runner.c
+	$(CPP) -c game_runner.c -o game_runner.o $(CXXFLAGS)
+
+animation.o: animation.c
+	$(CPP) -c animation.c -o animation.o $(CXXFLAGS)
+
+draw.o: draw.c
+	$(CPP) -c draw.c -o draw.o $(CXXFLAGS)
+
+archive.o: archive.c
+	$(CPP) -c archive.c -o archive.o $(CXXFLAGS)
+
+linked_list.o: linked_list.c
+	$(CPP) -c linked_list.c -o linked_list.o $(CXXFLAGS)
